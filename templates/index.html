@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Quadratic Equations with SymPy</title>
+
+    <!-- MathJax renders the LaTeX produced by SymPy. -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [["\\(", "\\)"]],
+                displayMath: [["\\[", "\\]"]]
+            }
+        };
+    </script>
+
+    <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #17202a;
+        }
+
+        main {
+            width: min(800px, 100%);
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .description {
+            margin-bottom: 32px;
+            text-align: center;
+            color: #566573;
+        }
+
+        .equation-card {
+            margin-bottom: 20px;
+            padding: 24px;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        }
+
+        .equation-card h2 {
+            margin-top: 0;
+            font-size: 1.15rem;
+        }
+
+        .math {
+            overflow-x: auto;
+            font-size: 1.2rem;
+        }
+
+        .solutions {
+            margin-top: 18px;
+            padding-top: 14px;
+            border-top: 1px solid #e5e7e9;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>Five Quadratic Equations</h1>
+
+        <p class="description">
+            Created and solved in Python using SymPy.
+        </p>
+
+        {% for item in equations %}
+            <article class="equation-card">
+                <h2>Equation {{ item.number }}</h2>
+
+                <div class="math">
+                    \[
+                        {{ item.equation_latex | safe }}
+                    \]
+                </div>
+
+                <div class="solutions">
+                    <strong>Solutions:</strong>
+
+                    <div class="math">
+                        \[
+                            x \in {{ item.solutions_latex | safe }}
+                        \]
+                    </div>
+                </div>
+            </article>
+        {% endfor %}
+    </main>
+</body>
+</html>
